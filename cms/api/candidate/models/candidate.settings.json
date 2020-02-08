@@ -62,6 +62,9 @@
       "type": "component",
       "repeatable": true,
       "component": "contact.social"
+    },
+    "district": {
+      "model": "district"
     }
   }
 }

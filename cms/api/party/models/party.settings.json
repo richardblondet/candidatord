@@ -32,6 +32,11 @@
       "type": "component",
       "repeatable": true,
       "component": "contact.contact"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.social"
     }
   }
 }

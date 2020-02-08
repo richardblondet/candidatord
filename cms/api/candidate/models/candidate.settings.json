@@ -55,8 +55,13 @@
       "component": "contact.contact"
     },
     "candidate_proposals": {
-      "via": "candidate",
-      "collection": "candidate-proposals"
+      "collection": "candidate-proposals",
+      "via": "candidate"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.social"
     }
   }
 }

@@ -1,4 +1,6 @@
 {
+  "connection": "default",
+  "collectionName": "candidate_proposals",
   "info": {
     "name": "Candidate Proposals"
   },
@@ -12,10 +14,12 @@
       "required": true
     },
     "candidate": {
-      "model": "candidate",
-      "via": "candidate_proposals"
+      "via": "candidate_proposals",
+      "model": "candidate"
+    },
+    "categories": {
+      "via": "candidate_proposals",
+      "collection": "category"
     }
-  },
-  "connection": "default",
-  "collectionName": "candidate_proposals"
+  }
 }

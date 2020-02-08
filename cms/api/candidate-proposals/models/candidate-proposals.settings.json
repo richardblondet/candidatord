@@ -1,0 +1,21 @@
+{
+  "info": {
+    "name": "Candidate Proposals"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "proposal": {
+      "type": "string",
+      "required": true
+    },
+    "candidate": {
+      "model": "candidate",
+      "via": "candidate_proposals"
+    }
+  },
+  "connection": "default",
+  "collectionName": "candidate_proposals"
+}

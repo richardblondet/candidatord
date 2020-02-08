@@ -1,2 +1,2 @@
-# tucandidato
-Conoce y consulta a los candidatos 
+# TuCandidatoRD
+Conoce y consulta a los candidatos de forma fácil

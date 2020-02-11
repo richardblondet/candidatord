@@ -1,11 +1,13 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { State } from '../store';
 import queryString from 'query-string';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { setSearchTerm, setSearchBoxState } from '../actions';
 
 import { FiX } from 'react-icons/fi';
-import { Input, InputGroup, InputGroupAddon, InputGroupText, Container, Row, Col, Button } from 'reactstrap';
+import { Input, InputGroup, InputGroupAddon, Container, Row, Col, Button } from 'reactstrap';
+
+import { CandidateProfile as Candidate } from './Candidate';
 
 interface IQueryParams {
   q?:string
@@ -16,7 +18,7 @@ interface IQueryParams {
  * 
  * Independent functional component seen in the Home page that handles user Input and sends signal to app via context
  */
-const SearchBox: React.FC = () => {
+const SearchBox : React.FC = () => {
   const { state: { searchBox }, dispatch } = useContext(State);
   const location = useLocation();
   const history = useHistory();
@@ -130,7 +132,26 @@ const Results : React.FC = () => {
   console.log("%c results", "font-size:2em;", results);
   // <code>{JSON.stringify(results)}</code>
   return (
-    <div>Results here</div>
+    <>
+      <Container fluid>
+        <Row>
+          <Col>
+            <div className="list-group">
+              {results.map((candidate:any, index:number) => {
+                return (
+                  <Link to="/candidate" className="list-group-item">
+                    <Candidate 
+                      name={candidate.name} 
+                      party={candidate.party.acronym} 
+                      picture={candidate.profile_picture} />
+                  </Link>
+                );
+              })}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 
@@ -151,7 +172,7 @@ const Home : React.FC = (props:any) => {
           </SearchWrapper>
         </div>
       </header>
-      <div id="results-wrapper">
+      <div id="results-wrapper" className="mt-4">
         <Results />
       </div>
     </Fragment>

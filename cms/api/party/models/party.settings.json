@@ -19,9 +19,6 @@
     "description": {
       "type": "richtext"
     },
-    "funded": {
-      "type": "integer"
-    },
     "logo": {
       "model": "file",
       "via": "related",
@@ -37,6 +34,9 @@
       "type": "component",
       "repeatable": true,
       "component": "contact.social"
+    },
+    "funded": {
+      "type": "date"
     }
   }
 }

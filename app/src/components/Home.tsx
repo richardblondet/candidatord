@@ -106,7 +106,11 @@ const SearchBox : React.FC = () => {
   );
 };
 
-const SearchWrapper = ({ children }:{ children:React.ReactNode }) => {
+/**
+ * Simple search wrapper
+ * @param param
+ */
+const SearchWrapper = ({ children } : { children:React.ReactNode }) => {
   return (
     <>
       <Container fluid>
@@ -125,7 +129,7 @@ const Results : React.FC = () => {
     if (results.length < 1){
       fetch('/api/candidates')
         .then(response => response.json())
-        .then(json => setResults(json));
+        .then(json => setResults(json.candidates));
     }
   });
 
@@ -161,7 +165,6 @@ const Results : React.FC = () => {
  */
 const Home : React.FC = (props:any) => {
   // console.log("%c props", "font-size:2em;", props);
-  
 
   return (
     <Fragment>

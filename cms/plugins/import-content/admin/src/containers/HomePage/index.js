@@ -48,7 +48,7 @@ class HomePage extends Component {
       });
     });
   }
-  getModels = async () => {  
+  getModels = async () => {
     this.setState({ loading: true });
     try {
       const response = await request("/content-type-builder/content-types", { // 👀

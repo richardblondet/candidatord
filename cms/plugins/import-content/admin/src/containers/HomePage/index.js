@@ -3,24 +3,25 @@
  * HomePage
  *
  */
-
-import React, { memo, Component } from "react";  
-import {request} from "strapi-helper-plugin";  
-import PropTypes from "prop-types";  
-import pluginId from "../../pluginId";  
-import { Select, Label } from "@buffetjs/core";  
+import React, { memo, Component } from "react";
+import {request} from "strapi-helper-plugin";
+import PropTypes from "prop-types";
+import pluginId from "../../pluginId";
+import { Select, Label, Button } from "@buffetjs/core";
 import { get, has, isEmpty, pickBy, set } from "lodash";
 
 import { HeaderNav, LoadingIndicator, PluginHeader } from "strapi-helper-plugin";
 import UploadFileForm from "../../components/UploadFileForm";
-import Row from "../../components/Row";  
-import Block from "../../components/Block";  
-import ExternalUrlForm from "../../components/ExternalUrlForm";  
-import RawInputForm from "../../components/RawInputForm";  
+import Row from "../../components/Row";
+import Block from "../../components/Block";
+import ExternalUrlForm from "../../components/ExternalUrlForm";
+import RawInputForm from "../../components/RawInputForm";
+import MappingTable from "../../components/MappingTable";
 
 const getUrl = to => to ? `/plugins/${pluginId}/${to}` : `/plugins/${pluginId}`;
 
 class HomePage extends Component {  
+  
   importSources = [
     { label: "External URL ", value: "url" },
     { label: "Upload file", value: "upload" },
@@ -33,7 +34,34 @@ class HomePage extends Component {
     importSource: "upload",
     analyzing: false,
     analysis: null,
-    selectedContentType: ""
+    selectedContentType: "",
+    fieldMapping: {} // <---
+  };
+
+  onSaveImport = async () => {  
+    const { selectedContentType, fieldMapping } = this.state;
+    const { analysisConfig } = this;
+    const importConfig = {
+      ...analysisConfig,
+      contentType: selectedContentType,
+      fieldMapping
+    };
+    try {
+      await request("/import-content", { method: "POST", body: importConfig });
+      this.setState({ saving: false }, () => {
+      strapi.notification.info("Import started");
+      });
+    } catch (e) {
+      strapi.notification.error(`${e}`);
+    }
+  };
+  getTargetModel = () => { // <---
+    const { models } = this.state;
+    if (!models) return null;
+    return models.find(model => model.uid === this.state.selectedContentType);
+  };
+  setFieldMapping = fieldMapping => { // <---
+    this.setState({ fieldMapping });
   };
   selectImportDest = selectedContentType => {  
     this.setState({ selectedContentType });
@@ -171,6 +199,20 @@ class HomePage extends Component {
             </Row>
           </Block>
         </div>
+        {this.state.analysis && (
+          <Row className="row">
+            <MappingTable
+              analysis={this.state.analysis}
+              targetModel={this.getTargetModel()}
+              onChange={this.setFieldMapping}
+            />
+            <Button  
+                style={{ marginTop: 12 }}
+                label={"Run the Import"}
+                onClick={this.onSaveImport}
+              />
+          </Row>
+        )}
       </div>
     );
   };

@@ -1,6 +1,22 @@
 {
   "routes": [
     {
+      "method": "POST",
+      "path": "/preAnalyzeImportFile",
+      "handler": "ImportContent.preAnalyzeImportFile",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/",
+      "handler": "ImportContent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/",
       "handler": "ImportContent.index",
@@ -9,9 +25,17 @@
       }
     },
     {
+      "method": "DELETE",
+      "path": "/:importId",
+      "handler": "ImportContent.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
-      "path": "/preAnalyzeImportFile",
-      "handler": "ImportContent.preAnalyzeImportFile",
+      "path": "/:importId/undo",
+      "handler": "ImportContent.undo",
       "config": {
         "policies": []
       }

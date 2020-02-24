@@ -38,4 +38,5 @@ class TargetFieldSelect extends Component {
     );
   }
 }
-export default TargetFieldSelect;  
+
+export default TargetFieldSelect;

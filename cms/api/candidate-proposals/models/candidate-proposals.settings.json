@@ -10,16 +10,16 @@
   },
   "attributes": {
     "proposal": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "candidate": {
-      "via": "candidate_proposals",
-      "model": "candidate"
+      "model": "candidate",
+      "via": "candidate_proposals"
     },
     "categories": {
-      "via": "candidate_proposals",
-      "collection": "category"
+      "collection": "category",
+      "via": "candidate_proposals"
     }
   }
 }

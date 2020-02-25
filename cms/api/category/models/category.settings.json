@@ -38,8 +38,8 @@
       "type": "string"
     },
     "candidate_proposals": {
-      "collection": "candidate-proposals",
       "via": "categories",
+      "collection": "candidate-proposals",
       "dominant": true
     }
   }

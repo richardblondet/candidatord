@@ -1,28 +1,27 @@
-import React, { Component } from "react";  
-import TargetFieldSelect from "./TargetFieldSelect";  
-import { Label } from "@buffetjs/core";  
+import React, { Component } from 'react';
+import TargetFieldSelect from './TargetFieldSelect';
+import {Label} from '@buffetjs/core'
 
-const MappingOptions = ({ stat, onChange, targetModel }) => {  
+const MappingOptions = ({ stat, onChange, targetModel }) => {
   return (
     <div>
-      {stat.format === "xml" && (
+      {stat.format === 'xml' && (
         <div>
-          <Label htmlFor={"stripCheckbox"} message={"Strip Tags"} />
+          <Label
+            htmlFor={'stripCheckbox'}
+            message={'Strip Tags'}/>
           <input
-            name={"stripCheckbox"}
+            name={'stripCheckbox'}
             type="checkbox"
             onChange={e => onChange({ stripTags: e.target.checked })}
           />
         </div>
       )}
       {stat.hasMediaUrls && (
-        <div style={{ paddingTop: 8, paddingBottom: 8 }}>
-          <Label
-            htmlFor={"mediaTargetSelect"}
-            message={"Import Media to Field"}
-          />
+        <div style={{paddingTop: 8, paddingBottom:8}}>
+          <Label htmlFor={'mediaTargetSelect'} message={'Import Media to Field'}/>
           <TargetFieldSelect
-            name={"mediaTargetSelect"}
+            name={'mediaTargetSelect'}
             targetModel={targetModel}
             onChange={targetField =>
               onChange({ importMediaToField: targetField })

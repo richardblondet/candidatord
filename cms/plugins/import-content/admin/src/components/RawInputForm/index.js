@@ -1,29 +1,35 @@
-import React, {Component} from 'react'  
-import PropTypes from 'prop-types'  
-import {Label, Select, Button, Textarea} from '@buffetjs/core'  
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import {Label, Select, Button, Textarea} from '@buffetjs/core'
 import Row from "../Row";
 
-class RawInputForm extends Component {  
+class RawInputForm extends Component {
   dataFormats = [{label: 'csv', value: 'text/csv'}];
+
   state = {
     rawText: '',
     dataFormat: 'text/csv'
+
   }
+
   textChanged = async rawText => {
     this.setState({rawText});
   };
+
   changeDataFormat = dataFormat => {
     this.setState({dataFormat});
   };
+
   analyze = () => {
-    const { dataFormat, rawText } = this.state;
+    const {dataFormat, rawText} = this.state;
     this.props.onRequestAnalysis({
-      source: "raw",
-      type: this.state.dataFormat,
-      options: { rawText }
+      source: 'raw',
+      type: dataFormat,
+      options: {rawText}
     });
   };
-  render() { 
+
+  render() {
     return (
       <div className={'col-12'}>
         <Row className={'row'}>
@@ -38,8 +44,7 @@ class RawInputForm extends Component {
             onChange={({target: {value}}) => this.changeDataFormat(value)}
           />
         </Row>
-        <Row
-          className={'row'}>
+        <Row className={'row'}>
           <Textarea
             name={'rawTextarea'}
             className={'col-12'}
@@ -49,7 +54,8 @@ class RawInputForm extends Component {
             value={this.state.rawText}
             onChange={({target: {value}}) => {
               this.textChanged(value)
-            }} />
+            }}
+          />
         </Row>
         <Row className={'row'}>
           <Button
@@ -60,10 +66,10 @@ class RawInputForm extends Component {
       </div>
     )
   }
-};
+}
 
-RawInputForm.propTypes = {  
+RawInputForm.propTypes = {
   onRequestAnalysis: PropTypes.func.isRequired,
   loadingAnalysis: PropTypes.bool.isRequired
 }
-export default RawInputForm  
+export default RawInputForm

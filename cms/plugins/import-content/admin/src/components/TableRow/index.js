@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Row = styled.div`
+const Row = styled.tr`
   padding-top: 18px;
 `;
 

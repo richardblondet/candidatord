@@ -6,11 +6,11 @@
 
 module.exports = {
   // Before saving a value.
-  // Fired before an `insert`.
+  // Fired before an `insert` or `update` query.
   // beforeSave: async (model) => {},
 
   // After saving a value.
-  // Fired after an `insert`.
+  // Fired after an `insert` or `update` query.
   // afterSave: async (model, result) => {},
 
   // Before fetching all values.

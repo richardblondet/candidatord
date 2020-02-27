@@ -5,17 +5,27 @@
     "name": "importconfig",
     "description": ""
   },
-  "options": { "timestamps": true, "increments": true, "comment": "" },
+  "options": {
+    "timestamps": true,
+    "increments": true,
+    "comment": ""
+  },
   "attributes": {
-    "date": { "type": "date" },
+    "date": {
+      "type": "date"
+    },
     "source": {
       "type": "string"
     },
-    "options": { "type": "json" },
+    "options": {
+      "type": "json"
+    },
     "contentType": {
       "type": "string"
     },
-    "fieldMapping": { "type": "json" },
+    "fieldMapping": {
+      "type": "json"
+    },
     "ongoing": {
       "type": "boolean"
     },

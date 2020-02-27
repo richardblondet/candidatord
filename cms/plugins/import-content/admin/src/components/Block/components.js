@@ -1,6 +1,6 @@
-import styled from "styled-components";  
+import styled from 'styled-components';
 
-const Wrapper = styled.div`  
+const Wrapper = styled.div`
   margin-bottom: 35px;
   background: #ffffff;
   padding: 22px 28px 18px;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   -webkit-font-smoothing: antialiased;
 `;
 
-const Sub = styled.div`  
+const Sub = styled.div`
   padding-top: 0px;
   line-height: 18px;
   > p:first-child {
@@ -24,4 +24,4 @@ const Sub = styled.div`
   }
 `;
 
-export { Wrapper, Sub };  
+export { Wrapper, Sub };

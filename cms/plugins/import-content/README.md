@@ -14,8 +14,6 @@ Install headless CMS [Strapi](https://strapi.io/)
 ### Installing
 
 
-Say what the step will be
-
 ```
 cd my-strapi-project/plugins
 git clone this-repo-name import-content
@@ -43,15 +41,8 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 ```
-"content-type-parser": "1.0.2",
-"csv-parse": "4.8.2",
-"get-urls": "9.2.0",
-"lodash": "^4.17.15",
-"moment": "^2.24.0",
-"request": "^2.88.2",
-"rss-parser": "3.7.3",
-"simple-statistics": "7.0.7",
-"striptags": "3.1.1"
+- ReactJS 
+- Strapi Headless CMS
 ```
 
 ## Authors
